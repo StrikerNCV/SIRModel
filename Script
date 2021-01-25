@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+int P = 1200;  
+double S[25], I[25], R[25], a = 0.001, b=0.60;
+
+S[0] = P - 1;
+I[0] = 1;
+R[0] = 0;
+
+  for (int i=0; i<=25; i++){
+    if(i==0) {
+      cout << "--- Modelo SIR ---\n";
+      cout << endl;
+    } else {
+      S[i] = S[i-1] - ((a* S[i-1]) * I[i-1]);
+      I[i] = I[i-1] + ((a* S[i-1]) * I[i-1]) - b*I[i-1];
+      R[i] = R[i-1] + (b * I[i-1]);
+    }
+    cout << S[i] << "; " << I[i] << "; " << R[i] << "\n";
+    cout << "T: " << i << "   ";
+  }
+
+}
